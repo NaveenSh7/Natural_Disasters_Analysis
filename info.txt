@@ -1,0 +1,55 @@
+
+# ==============================
+# Step 2: Data Cleaning & Preprocessing
+# ==============================
+
+# import pandas as pd
+
+# # Load dataset (update filename if needed)
+# df = pd.read_csv("data/natural_disasters_2024.csv")
+
+# print(" Initial Shape:", df.shape)
+# print(" First 5 Rows:")
+# print(df.head(), "\n")
+
+# # 1. Check missing values
+# print(" Missing Values:")
+# print(df.isnull().sum(), "\n")
+
+# # 2. Data types check
+# print(" Data Types Before Cleaning:")
+# print(df.dtypes, "\n")
+
+# # 3. Convert Date column to datetime
+# df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+# # 4. Ensure numeric columns are numeric
+# df['Magnitude'] = pd.to_numeric(df['Magnitude'], errors='coerce')
+# df['Fatalities'] = pd.to_numeric(df['Fatalities'], errors='coerce')
+# df['Economic_Loss($)'] = pd.to_numeric(df['Economic_Loss($)'], errors='coerce')
+
+# # 5. Handle missing values
+# #    - Fill categorical with mode
+# for col in ['Disaster_Type', 'Location']:
+#     if df[col].isnull().sum() > 0:
+#         df[col].fillna(df[col].mode()[0], inplace=True)
+
+# #    - Fill numeric with median
+# for col in ['Magnitude', 'Fatalities', 'Economic_Loss($)']:
+#     if df[col].isnull().sum() > 0:
+#         df[col].fillna(df[col].median(), inplace=True)
+
+# # 6. Create new time features
+# df['Month'] = df['Date'].dt.month
+# df['Quarter'] = df['Date'].dt.quarter
+
+# # 7. Quick stats for outlier detection
+# print(" Statistical Summary:")
+# print(df[['Magnitude', 'Fatalities', 'Economic_Loss($)']].describe(), "\n")
+
+# # 8. Final cleaned shape
+# print(" Final Shape after Cleaning:", df.shape)
+
+# # Save cleaned dataset
+# df.to_csv("disasters_2024_cleaned.csv", index=False)
+# print(" Cleaned dataset saved as disasters_2024_cleaned.csv")
