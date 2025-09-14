@@ -17,7 +17,7 @@ df["End_Date"] = pd.to_datetime(df["End_Date"])
 # --------------------
 # Streamlit Page Config
 # --------------------
-st.set_page_config(page_title="Natural Disaster Dashboard ", layout="wide")
+st.set_page_config(page_title="Natural Disaster Analytics Dashboard ", layout="wide")
 st.title("🌍 Natural Disaster Dashboard 2010 - 2025")
 
 st.markdown(
